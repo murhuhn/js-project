@@ -1,67 +1,71 @@
 'use strict';
 
-//3) Спрашиваем у пользователя “Как называется ваш проект?” и результат сохраняем в переменную title
 
-const title = prompt('Как называется ваш проект?');
-
-//4) Спросить у пользователя “Какие типы экранов нужно разработать?” сохранить в переменную screens (пример: "Простые, Сложные, Интерактивные")
-
+let title = prompt('Как называется ваш проект?');
 const screens = prompt('Какие типы экранов нужно разработать?');
-
-// 5) Спросить у пользователя “Сколько будет стоить данная работа?” и сохранить в переменную screenPrice (пример: 12000)
-const screenPrice =  parseFloat(prompt('Сколько будет стоить данная работа?'));
-console.log(screenPrice);
-
+const screenPrice = parseFloat(prompt('Сколько будет стоить данная работа?'));
 const rollback = 18;
-
-// 6) Спросить у пользователя “Нужен ли адаптив на сайте?” и сохранить данные в переменной adaptive (булево значение true/false)
-
 const adaptive = confirm('Нужен ли адаптив на сайте?');
-
-//7) Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 1. “Какой дополнительный тип услуги нужен?” (например service1, service2) 2. “Сколько это будет стоить?” (например servicePrice1, servicePrice2) в итоге 4 вопроса и 4 разные переменных, вопросы задаются в такой последовательности Название - Стоимость - Название - Стоимость
-
 const service1 = prompt('Какой дополнительный тип услуги нужен?');
 const servicePrice1 = parseFloat(prompt('Сколько это будет стоить?'));
-console.log(servicePrice1);
-const servicePrice2 =parseFloat(prompt('Сколько это будет стоить?'));
-console.log(servicePrice2);
+const servicePrice2 = parseFloat(prompt('Сколько это будет стоить?'));
 const service2 = prompt('Какой дополнительный тип услуги нужен?');
 
 
+// if (fullPrice.isNaN) {
+//   console.log("Ошибка. Не числовое значение");
+// } else {
+//   console.log(fullPrice);
+// }
 
-//8) Вычислить итоговую стоимость работы учитывая стоимость верстки экранов и дополнительных услуг (screenPrice + servicePrice1 + servicePrice2) и результат занести в переменную fullPrice
 
-const fullPrice = screenPrice + servicePrice1 + servicePrice2;
-if (fullPrice.isNaN) {
-  console.log("Ошибка. Не числовое значение");
-} else {
-  console.log(fullPrice);
+const getAllServicePrices = function (a, b) {
+  return a + b;
+};
+
+
+function getFullPrice(a, b) {
+  return a + b;
 }
 
-//9) Объявить переменную servicePercentPrice и занести в нее итоговую стоимость за вычетом отката посреднику (servicePercentPrice = fullPrice - Откат посреднику), округлив результат в большую сторону (методы объекта Math в помощь). Вывести servicePercentPrice в консоль.
+const getTitle = function () {
+  return title.trim()[0].toUpperCase() + title.trim().substr(1).toLowerCase()
+};
 
-const servicePercentPrice = Math.ceil(fullPrice * (rollback / 100));
+
+const getServicePercentPrices = function (a, b) {
+  return Math.ceil(a * (b / 100));
+};
+
+
+const showTypeOf = function (variable) {
+  return typeof (variable, typeof variable);
+}
+
+const getRollbackMessage = function (a) {
+  if (a > 30000) {
+    return 'Даем скидку в 10%';
+  } else if (a >= 15000 && a <= 30000) {
+    return 'Даем скидку в 5%';
+  } else if (a < 15000 && a >= 0) {
+    return 'Скидка не предусмотрена';
+  } else {
+    return 'Что-то пошло не так';
+  }
+}
+
+const allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
+const fullPrice = getFullPrice(allServicePrices, screenPrice);
+const servicePercentPrice = getServicePercentPrices(fullPrice, rollback)
+title = getTitle();
+
+
+
+console.log(showTypeOf(title));
+console.log(showTypeOf(screenPrice));
+console.log(showTypeOf(adaptive));
+console.log(screens);
+console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
 
 
-//10) Написать конструкцию условий (расчеты приведены в рублях) (вывести в консоль)
-if (fullPrice > 30000) {
-  console.log('Даем скидку в 10%');
-} else if (fullPrice >= 15000 && fullPrice <= 30000) {
-  console.log('Даем скидку в 5%');
-} else if (fullPrice < 15000 && fullPrice >= 0) {
-  console.log('Скидка не предусмотрена');
-} else {
-  console.log('Что-то пошло не так');
-}
-
-// console.log(typeof title);
-// console.log(typeof fullPrice);
-// console.log(typeof adaptive);
-// console.log(screens.length);
-// console.log('Cтоимость вертски экранов ' + screenPrice + ' рублей/ долларов/гривен/юани');
-// console.log('Стоимость разработки сайта ' + fullPrice + ' рублей/ долларов/гривен/юани');
-// screens = screens.toLowerCase();
-// console.log(screens.split(', '));
-// price = fullPrice * (rollback / 100);
-// console.log('Процент отката посреднику за работу' + price);
