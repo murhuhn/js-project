@@ -20,7 +20,7 @@ const isNumber = function (num) {
 
 const asking = function () {
   title = prompt('Как называется ваш проект?', "Калькулятор верстки");
-  screens = prompt('Какие типы экранов нужно разработать?', "Простые, cложные, bнтерактивные");
+  screens = prompt('Какие типы экранов нужно разработать?', "Простые, cложные, интерактивные");
 
   do {
       screenPrice = Number(screenPrice = prompt('Сколько будет стоить данная работа?'));
@@ -41,7 +41,8 @@ const getAllServicePrices = function () {
       }
 
       do {
-          sum = Number(sum = prompt("Сколько это будет стоить?"));
+          const servicePrice =  prompt("Сколько это будет стоить?");
+          sum = Number(servicePrice);
       }
       while (!isNumber(sum));
       sum += sum;
