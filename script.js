@@ -29,9 +29,6 @@ const appData = {
     appData.getFullPrice(appData.allServicePrices, appData.screenPrice);
     appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
     appData.logger();
-
-
-    appData.logger();
   },
   isNumber: function (num) {
 
