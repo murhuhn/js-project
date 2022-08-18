@@ -44,7 +44,7 @@ const appData = {
 
     for (let i = 0; i < 2; i++) {
 
-      let name = prompt('Какие типы экранов нужно разработать?');
+      let name;
       let price = 0;
 
       do {
@@ -66,7 +66,7 @@ const appData = {
     }
     for (let i = 0; i < 2; i++) {
 
-      let name = prompt('Какой дополнительный тип услуги нужен?');
+      let name;
       let price = 0;
 
       do {
