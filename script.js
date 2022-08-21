@@ -1,124 +1,34 @@
-'use strict';
+const body = document.querySelector('body');
+const allBooks = document.querySelectorAll('.book');
+const booksBlock = document.querySelector('.books');
+const book2 = allBooks[0].querySelector('ul');
+const book5 = allBooks[5].querySelector('ul');
+const book6 = allBooks[2].querySelector('ul');
+const chapter8 = document.createElement('li');
 
 
-// let title;
-// let screens;
-// let screenPrice;
-// let adaptive;
-// let rollback = 18;
-// let allServicePrices;
-// let fullPrice;
-// let servicePercentPrice;
-// let service1;
-// let service2;
+booksBlock.prepend(allBooks[1]);
+allBooks[3].before(allBooks[4]);
+booksBlock.append(allBooks[2]);
 
-const appData = {
-  title: '',
-  screens: [],
-  screenPrice: 0,
-  adaptive: true,
-  rollback: 18,
-  allServicePrices: 0,
-  fullPrice: 0,
-  servicePercentPrice: 0,
-  services: {},
-  start: function () {
-    appData.asking();
-    appData.addPrices();
-    appData.getTitle();
-    appData.getFullPrice(appData.allServicePrices, appData.screenPrice);
-    appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
-    appData.logger();
-  },
-  isNumber: function (num) {
+body.style.backgroundImage = "url('/image/you-dont-know-js.jpg')";
 
-    return !isNaN(parseFloat(num)) && isFinite(num);
-  },
-  asking: function () {
-    do {
-      appData.title = prompt('Как называется ваш проект?', 'Калькулятор верстки');
-    } while (appData.isNumber(appData.title));
+booksBlock.children[2].querySelector('a').textContent = 'Книга 3. this и Прототипы Объектов';
 
-    for (let i = 0; i < 2; i++) {
+body.querySelector('.adv').remove();
 
-      let name;
-      let price = 0;
+book2.children[3].after(book2.children[6]);
+book2.children[4].after(book2.children[8]);
+book2.children[9].after(book2.children[2]);
 
-      do {
-        name = prompt('Какие типы экранов нужно разработать?');
-      } while (appData.isNumber(name));
+book5.children[1].after(book5.children[9]);
+book5.children[2].after(book5.children[4]);
+book5.children[3].after(book5.children[5]);
+book5.children[8].after(book5.children[6]);
+
+chapter8.textContent='Глава 8: За пределами ES6';
+
+book6.children[8].after(chapter8);
 
 
-      do {
-        price = prompt("Сколько это будет стоить?");
-      }
-      while (!appData.isNumber(price));
-
-      appData.screens.push({
-        id: i,
-        name: name,
-        price: price
-      });
-
-    }
-    for (let i = 0; i < 2; i++) {
-
-      let name;
-      let price = 0;
-
-      do {
-        name = prompt('Какой дополнительный тип услуги нужен?');
-      } while (appData.isNumber(name));
-
-      do {
-        price = prompt("Сколько это будет стоить?");
-      }
-      while (!appData.isNumber(price));
-
-      appData.services[name] = +price;
-
-    }
-
-    appData.adaptive = confirm('Нужен ли адаптив на сайте?');
-  },
-
-  addPrices: function () {
-    for (let screen of appData.screens) {
-      appData.screenPrice += +screen.price;
-    }
-
-
-    for (let key in appData.services) {
-      appData.allServicePrices += appData.services[key];
-    }
-  },
-  getFullPrice: function (a, b) {
-    appData.fullPrice = a + b;
-  },
-  getTitle: function () {
-    appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().substr(1).toLowerCase()
-  },
-  getServicePercentPrices: function (a, b) {
-    appData.servicePercentPrice = Math.ceil(a * (b / 100));
-  },
-  getRollbackMessage: function (a) {
-    if (a > 30000) {
-      return 'Даем скидку в 10%';
-    } else if (a >= 15000 && a <= 30000) {
-      return 'Даем скидку в 5%';
-    } else if (a < 15000 && a >= 0) {
-      return 'Скидка не предусмотрена';
-    } else {
-      return 'Что-то пошло не так';
-    }
-  },
-  logger: function () {
-    for (let key in appData) {
-      console.log("Ключ: " + key + "; " + "Значение: " + appData[key]);
-    }
-  }
-
-};
-
-
-appData.start();
+console.log(allBooks);
