@@ -1,13 +1,18 @@
 'use strict';
 const title = document.getElementsByTagName('h1')
-const handlerBtn = document.getElementsByClassName('handler_btn')
+const calcBtn = document.getElementsByClassName('handler_btn')[0]
+const resetBtn = document.getElementsByClassName('handler_btn')[1]
 const screenBtn = document.querySelector('.screen-btn')
 const otherItemsPercent = document.querySelectorAll('.percent')
 const otherItemsNumber = document.querySelectorAll('.number')
 const inputRollback = document.querySelector('.rollback')
 const inputRange = document.querySelector('.rollback > .main-controls__range > input')
 const rangeValue = document.querySelector('.rollback > .main-controls__range> .range-value')
-const totalInputs = document.getElementsByClassName('total-input')
+const layoutPrice = document.getElementsByClassName("total-input")[0]
+const numberOfScreens = document.getElementsByClassName("total-input")[1]
+const additionalServicesPrice = document.getElementsByClassName("total-input")[2]
+const totalPrice = document.getElementsByClassName("total-input")[3]
+const priceWithRollback = document.getElementsByClassName("total-input")[4]
 let screenBlock = document.querySelectorAll('.screen')
 
 
