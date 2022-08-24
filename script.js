@@ -1,34 +1,26 @@
-const body = document.querySelector('body');
-const allBooks = document.querySelectorAll('.book');
-const booksBlock = document.querySelector('.books');
-const book2 = allBooks[0].querySelector('ul');
-const book5 = allBooks[5].querySelector('ul');
-const book6 = allBooks[2].querySelector('ul');
-const chapter8 = document.createElement('li');
+
+const button = document.getElementById('btn');
+const inputRange = document.getElementById('range');
+let rangeSpan = document.getElementById('range-span');
+const inputText = document.getElementById('text');
+const square = document.getElementById('square');
+const circle = document.getElementById('circle');
+const eBtn = document.getElementById('e_btn');
+
+button.addEventListener('click', function () {
+    square.style.backgroundColor = inputText.value;
+});
+
+eBtn.style.display = "none";
+
+rangeSpan.textContent = '50%';
+
+let rangeChange = function(event) {
+  rangeSpan.textContent = event.target.value + "%";
+  circle.style.width = event.target.value + "%";
+  circle.style.height = event.target.value + "%";
+};
+
+inputRange.addEventListener('input', rangeChange);
 
 
-booksBlock.prepend(allBooks[1]);
-allBooks[3].before(allBooks[4]);
-booksBlock.append(allBooks[2]);
-
-body.style.backgroundImage = "url('/image/you-dont-know-js.jpg')";
-
-booksBlock.children[2].querySelector('a').textContent = 'Книга 3. this и Прототипы Объектов';
-
-body.querySelector('.adv').remove();
-
-book2.children[3].after(book2.children[6]);
-book2.children[4].after(book2.children[8]);
-book2.children[9].after(book2.children[2]);
-
-book5.children[1].after(book5.children[9]);
-book5.children[2].after(book5.children[4]);
-book5.children[3].after(book5.children[5]);
-book5.children[8].after(book5.children[6]);
-
-chapter8.textContent='Глава 8: За пределами ES6';
-
-book6.children[8].after(chapter8);
-
-
-console.log(allBooks);
