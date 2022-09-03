@@ -32,13 +32,13 @@ const appData = {
   init: function () {
     this.addTitle();
 
-    startBtn.addEventListener('click', this.start.bind(appData));
-    buttonPlus.addEventListener('click', this.addScreenBlock.bind(appData));
+    startBtn.addEventListener('click', this.start.bind(this));
+    buttonPlus.addEventListener('click', this.addScreenBlock.bind(this));
     inputRange.addEventListener('input', (event) => {
       this.rollback = event.target.value;
       rangeValue.textContent = event.target.value + '%';
     });
-    resetBtn.addEventListener('click', this.reset.bind(appData));
+    resetBtn.addEventListener('click', this.reset.bind(this));
   },
   addTitle: function () {
     document.title = title.textContent;
@@ -47,7 +47,7 @@ const appData = {
     this.addScreens();
     this.addServices();
     this.addPrices();
-    //appData.logger
+    //this.logger
     let checkScreens = true;
     this.screens.forEach((item) => {
       if (item.name === 'Тип экранов' || item.count === '' || parseInt(item.count) < 1) {
